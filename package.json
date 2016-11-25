@@ -1,5 +1,5 @@
 {
-  "name": "Smart Scale",
+  "name": "SmartScale",
   "version": "0.2.0",
   "description": "Xiaomi Smart Scale App, made with love and Electron.",
   "main": "main.js",
