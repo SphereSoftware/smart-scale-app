@@ -1,0 +1,36 @@
+{
+  "name": "Smart Scale",
+  "version": "0.2.0",
+  "description": "Xiaomi Smart Scale App, made with love and Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "repository": "https://github.com/SphereSoftware/smart-scale-app",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "build": {
+    "appId": "smart.scale.app",
+    "mac": {
+      "category": "smart.scale.app"
+    }
+  },
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.4.1",
+    "electron-builder": "^8.6.0",
+    "electron-rebuild": "^1.4.0"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "node-xiaomi-scale": "git+https://github.com/shemerey/node-xiaomi-scale.git"
+  }
+}
