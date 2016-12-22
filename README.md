@@ -1,26 +1,29 @@
-# Smart Scale App
+# Xiaomi Smart Scale App
 
-Electron is new way to develop modern `Desktop` apps with all power of `NodeJS`,
-`HTML`, and `CSS`. You can easily get things done within minutes, or hours for
-simple apps, and that will be nice enough to solve 80% of your day to day needs.
+Smart apps designed to make our live easier are becoming increasing popular.
+
+These range from fitness trackers to lightbulb controls. When designing these
+apps, you may find you need to improve the user experience. Or you need to
+access the raw data, but setting up a full stack project would be overkill for
+this purpose. That is when `Electron` comes into play.
 
 ![Smart Scale App](assets/splash.png)
 
-In this example we are going to explore `Electron` universe by creating a simple
-app that will help us to get access to `IoT` world. There are bunch of smart
-devices such as `fitness trackers`, `Smart Scale`, `Remove controlled light
-bulbs` all of them good, and make your life ease.
+Electron is a new way to develop modern desktop apps with all the power of
+`Node.js`, `HTML`, and `CSS`.  You can easily complete a functional app in a short
+time frame, which could solve `80%` of your day-to-day needs.
 
-But some times user experience is not so good, and you need a bit more. Or you
-just need access to the raw data. However setup a full stack project an overkill
-for this. That when `Electron` go into play.
+In this example, we are going to explore the `Electron` universe by creating a
+simple app that will give us access to the IoT world.  Integrating scales from
+`Xiaomi`, we will build a `Smart Scale` app that will show the user’s weight in
+real time. With `Electron`, the data will be collected and presented in a nice,
+clean format.
 
-Today we are going to build a super simple app that will show you your weight in
-real time collecting data from your `Smart Scale` and presenting it in a nice
-format.
+### STEP 1: Setup
 
-First of all we should setup things properly. There is bunch of boilerplates but
-we gonna keep things simple.
+First, we need to make sure the setup is done properly. Many templates are
+available for this step, but we are going to simplify this process by starting
+with a basic setup:
 
 ```sh
 # Clone this repository
@@ -33,7 +36,7 @@ npm install
 npm start
 ```
 
-You will have something like this
+Once you have completed this step, you will have something like this:
 
 ```sh
 .
@@ -45,32 +48,36 @@ You will have something like this
 └── renderer.js
 ```
 
-* `index.html` - Is main view of your app
-* `main.js` - Is entry point to your app
-* `renderer.js` - Is renderer process where all `NodeJS` staff is available.
+* `index.html`  is the app’s main view.
+* `main.js` is the app’s entry point.
+* `renderer.js` is where all the `Node.js` staff is available.
 
-So in order to build our app we need to split it into 3 part:
+### STEP 2: Divide the  process into 3 parts
 
-* - GUI and UX
-* - data service
+In order to build our app, we need to split it into 3 parts:
 
-`Smart scale` is build on BLE, (Bluetooth Low Energy) is very nice protocol, in
-`npm` land we have https://github.com/sandeepmistry/noble project that provide
-us low level API for basic bluetooth interaction.
+* `GUI` and `UX`
+* Data service
+* Integration of data & `UI`
 
-But we can go even further, quick search on github will give us ready to use
-`npm` package for `Smart Scale` https://github.com/perillamint/node-xiaomi-scale
+Our `Smart Scale` is built on `BLE` (Bluetooth Low Energy), which is a very nice
+protocol. In NPM land, the (https://github.com/sandeepmistry/noble)[https://github.com/sandeepmistry/noble] project
+provides us low-level API for basic Bluetooth interaction.
 
+But we can go even further. A quick search on github will give us a ready-to-use
+NPM package for our Smart Scale [node-xiaomi-scale](https://github.com/perillamint/node-xiaomi-scale):
 
 ```sh
 % npm i node-xiaomi-scale --save
 ```
 
-If you have problems with building this native extensions you can check [this](https://github.com/opensprints/opensprints-electron/issues/5) discussion.
+If you have problems with building this native extensions (for `macOS`) you can check [this](https://github.com/opensprints/opensprints-electron/issues/5) discussion.
 
-Now we are ready to start getting our firs real data in the app.
+### STEP 3: Enter data/code
 
-Our UI is going to be pretty simple
+Now we are ready get our first real data into the app.
+
+Our `UI` will be pretty simple:
 
 ```html
 <!DOCTYPE html>
@@ -89,9 +96,8 @@ Our UI is going to be pretty simple
 </html>
 ```
 
-As well as our data layer, just get sample code from `node-xiaomi-scale` package
-and put it  into `renderer.js` file and we good to go, our `MVP` is ready :)
-
+We can get sample code from the `node-xiaomi-scale` package and put it, as well
+as our data layer, into the `renderer.js` file, and we are good to go:
 
 ```js
 const MiScale = require('node-xiaomi-scale');
@@ -105,7 +111,9 @@ miscale.on('data', function (scale) {
 });
 ```
 
-start you app by
+### STEP 4: Start your app
+
+Here’s what we need to start our app:
 
 ```sh
 $ npm start
@@ -113,15 +121,17 @@ $ npm start
 
 ![First Real Data](assets/first_data.png)
 
+### STEP 5: Make your app
+
 Now we just need to polish our app and build it for all available platforms.
 
-For nice UI we are going to use http://ignitersworld.com/lab/radialIndicator.html
+To get a nice, clean `UI`, we are going to use http://ignitersworld.com/lab/radialIndicator.html:
 
 ```sh
 $ wget https://raw.githubusercontent.com/s-yadav/radialIndicator/master/radialIndicator.min.js
 ```
 
-UI
+Here is our `UI`:
 
 ```html
 <!DOCTYPE html>
@@ -148,7 +158,7 @@ UI
 </html>
 ```
 
-Data layer
+Here is our data layer:
 
 ```js
 const radialIndicator = require('./radialIndicator.min.js')
@@ -191,7 +201,7 @@ Build you app
 $ npm i electron-builder --save-dev
 ```
 
-add some sections to your package.json
+add some sections to your `package.json`
 
 ```json
 {
@@ -211,7 +221,7 @@ add some sections to your package.json
 }
 ```
 
-run
+run following command to make a build.
 
 ```sh
 $ npm run dist
