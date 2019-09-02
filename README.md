@@ -61,7 +61,7 @@ In order to build our app, we need to split it into 3 parts:
 * Integration of data & `UI`
 
 Our `Smart Scale` is built on `BLE` (Bluetooth Low Energy), which is a very nice
-protocol. In NPM land, the (https://github.com/sandeepmistry/noble)[https://github.com/sandeepmistry/noble] project
+protocol. In NPM land, the [https://github.com/sandeepmistry/noble](https://github.com/sandeepmistry/noble) project
 provides us low-level API for basic Bluetooth interaction.
 
 But we can go even further. A quick search on github will give us a ready-to-use
