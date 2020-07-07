@@ -25,7 +25,7 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.4.1",
+    "electron": "^9.1.0",
     "electron-builder": "^8.6.0",
     "electron-rebuild": "^1.4.0"
   },
